@@ -7,4 +7,4 @@ def quad(a, b, c):
 
   return x1,x2
 
-print(quad(1,4,3))
+print(quad(2,7,-15))
