@@ -24,7 +24,9 @@ def draw():
 
 def f(x):
     # simple graph for f(x) = x^2
-    return x**2
+    # return x**2
+    # return 6*x**3 + 31*x**2 + 3*x - 10 # now we can tackle the problem that we saw earlier to solve f(x)
+    return (2*x**2 + 7*x - 15)
 
 def graphFunction():
     # we can't just use a for-loop to graph points because the points will be unconnected
@@ -32,7 +34,7 @@ def graphFunction():
     # the best way to draw a connected curve is to draw the lines from point to point
     x = xmin # start the points at the minimum x value
     while x <= xmax: # continue until the maximum x value
-        fill(0) # sets color to black
+        stroke(255,0,0) # sets color to red
         # we will draw lines from one points to a point very close to it to
         # mimic curved lines (this is the essence of calculus)
         line(x*xscl, f(x)*yscl, (x+0.1)*xscl, f(x+0.1)*yscl)
@@ -45,7 +47,7 @@ def grid(xscl, yscl):
     stroke(0,255,255) # sets the line colors; cyan, in this case
     
     for i in range(xmin, xmax+1): # creates the grid lines for the graph
-        line(i*xscl, ymin*yscl, i*xscl, ymax*xscl)
+        line(i*xscl, ymin*yscl, i*xscl, ymax*yscl)
     for i in range(ymin, ymax+1): # initxcor, initycor, finxcor, finycor
         line(xmin*xscl, i*yscl, xmax*xscl, i*yscl)
         
