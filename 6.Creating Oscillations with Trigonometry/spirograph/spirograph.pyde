@@ -2,7 +2,7 @@ r1 = 300.0
 r2 = 175.0
 r3 = 5.0
 
-prop = 0.9
+prop = 0.5
 
 x1 = 0
 y1 = 0
@@ -35,7 +35,7 @@ def draw():
     points = [[x3, y3]] + points[:2000] # we need to know both the x and y points, so we save them both in a list to the greater list
     for i, pnt in enumerate(points): # iterates over all of the points in the list
         if i < len(points) - 1: # draws up to the next to lsat point
-            stroke(i * (255.0/2000),0,0) # red lines 
+            stroke(255,0,0) # red lines 
             line(pnt[0],pnt[1],points[i+1][0],points[i+1][1]) # draws lines between the current point and the point immediately after it
     
     t += 0.05

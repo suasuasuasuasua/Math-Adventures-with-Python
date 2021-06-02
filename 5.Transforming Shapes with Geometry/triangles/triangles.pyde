@@ -10,6 +10,8 @@ def draw():
     
     translate(width/2,height/2)
     background(255) # sets background to white
+    # note that this paints a background over and over and over, such that you get 
+    # clean animation, and not just a bunch of overlapping lines
     
     rotate(radians(t)) # rotates the grid, such that the sketch mimics an animation
     # triangle(0,0,100,100,200,-200) # bad way to create triangles
@@ -23,6 +25,7 @@ def draw():
     numTri = 90
     
     for i in range(1, numTri + 1): # animates a circle of 90 triangles
+    
         rotate(radians(360/numTri)) # rotates to new position in circle
         pushMatrix() # sets default location
         translate(200, 0) # moves the outer bound of circle
@@ -31,7 +34,7 @@ def draw():
         # we multiply by 360/90 to line up all of the triangles, creating a seamless pattern
         # therefore, the phase shifts must add up to a multiple to 360 degrees
         stroke(i * (255/numTri), 255, 255) # gives triangles a rainbow color
-        equalTri(100) # creates a triangle with length 50 (based on 30-60-90)
+        equalTri(90) # creates a triangle with length 50 (based on 30-60-90)
         popMatrix() # resets back to original grid location
     
     t += 0.5
