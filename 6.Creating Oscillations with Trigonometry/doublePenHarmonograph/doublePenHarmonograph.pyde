@@ -15,7 +15,7 @@ def draw():
     points = []
     
     while t < 255: # saves 255 points so that we don't have to draw everything in real time
-        # 250 points is the best balance between too much going to and too little going on 
+        # 255 points is the best balance between too much going to and too little going on 
         points.append(harmonograph(t)) # saves the coordinates to the lsit
         t += 0.01 # increments time
         # in this way, we don't have to watch the program draw the picture slowly
