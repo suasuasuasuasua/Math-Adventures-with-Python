@@ -14,3 +14,9 @@
 - we can think (x,y) as z = x + iy, where z is the complex number
 - we can imagine the x-axis as the real number line, and the y-axis as the imaginary number line
 
+## multiplying complex numbers
+- because i represents the square root of -1, multiplying complex numbers by i will rotate the number 90 degrees about the origin
+- through the foil method, the general form for (a + bi)(c + di) is [ac - bd, ad + bc]
+
+## mandelbrot set
+- the mandelbrot set is defined by: zn+1 = zn^2 + c, where c is the original complex number, z is iterated
