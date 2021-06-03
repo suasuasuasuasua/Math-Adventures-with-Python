@@ -25,10 +25,10 @@ def draw():
     
 def harmonograph(t): # define the harmonograph function
     
-    a1,a2 = 200,200    # amplitudes
+    a1,a2 = 200,200       # amplitudes
     f1,f2 = 3,3.025       # frequencies
     p1,p2 = PI/6, PI/2    # phase shifts
-    d1,d2 = 0.02, 0.02 # decay constants
+    d1,d2 = 0.02, 0.02    # decay constants
     
     ## note that this is the location of the pen as a result of oscillation
     # note that this is still only ONE pendulum affecting the x and y of the pen
