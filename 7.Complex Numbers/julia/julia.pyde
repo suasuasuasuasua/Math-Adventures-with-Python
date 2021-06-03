@@ -22,25 +22,23 @@ def setup():
     yscl = float(rangey)/height
     
 def draw():
+    # global xscl, yscl
     # translate(width/2,height/2)
+    # c = [-0.8, 0.156]
+    # c = [-0.4, 0.6]
+    c = [0.285, 0.01]
     
-    z = [0.25,0.75] # original complex number
-    
-    for x in range(width): # goes over all x's in the grid
-        for y in range(height): # goes over all y's in the grid
-            z = [ (xmin + x*xscl), (ymin + y*yscl) ] # because we want to take steps between -2 and 2, we need to 
-            # scale x and y appropriately
+    for x in range(width):
+        for y in range(height):
+            z = [ (xmin + x*xscl), (ymin + y*yscl) ]
             
-            iterations = mandelbrot(z, 100) # iterations determines what color each pixel should be
-            # z is a complex number that depends on the pixel's location
-            # 100 is the total iterations we will attempt
+            iteration = julia(z, c, 100)
             
-            if iterations == 100:
-                fill(0) # make the pixel black because does not diverge
+            if iteration == 100:
+                fill(0)
             else:
-                fill(255-15*iterations, 255, 255) # colors the pixel depending on the number of iterations it took
-                
-            rect(x, y, 1, 1) # makes a 1x1 rectangle at the pixel location  
+                fill(3 * iteration, 255, 255)
+            rect(x, y, 1, 1)
     
 #####
 
@@ -54,10 +52,10 @@ def cMult(u, v):
 def magnitude(z):
   return sqrt(z[0]**2 + z[1]**2) # solves for length of complex number relative to origin
 
-def mandelbrot(z, num):
-    # the mandelbrot set will operate on the complex number z
+def julia(z, c, num):
+    # the julia set will operate on the complex number z
     
-    # zn+1 = zn^2 + c (c = zi)
+    # zn+1 = zn^2 + c (c = some constant complex number, not z)
     count = 0
     z1 = z # z1 will be the iterated complex number
     # z will be the original, constant complex number
@@ -69,7 +67,7 @@ def mandelbrot(z, num):
             return count
         else:
             z1 = cMult(z1, z1) # if the length of z1 is not greater than 2.0
-            z1 = cAdd(z1, z)   # then we will square z1 and add z to it to
+            z1 = cAdd(z1, c)   # then we will square z1 and add z to it to
             count += 1         # get the next iteration of z1, then check again
             # iterate the count variable each time to know how to count
     return num # if z has not diverged 
