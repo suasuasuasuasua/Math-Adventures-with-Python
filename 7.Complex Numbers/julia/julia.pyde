@@ -12,6 +12,9 @@ ymax = 2
 rangex = xmax - xmin
 rangey = ymax - ymin
 
+
+t = 0
+
 def setup():
     global xscl, yscl
     size(600,600)
@@ -23,10 +26,11 @@ def setup():
     
 def draw():
     # global xscl, yscl
+    global t
     # translate(width/2,height/2)
-    # c = [-0.8, 0.156]
+    c = [-0.8, 0.156]
     # c = [-0.4, 0.6]
-    c = [0.285, 0.01]
+    # c = [0.285, 0.01]
     
     for x in range(width):
         for y in range(height):
