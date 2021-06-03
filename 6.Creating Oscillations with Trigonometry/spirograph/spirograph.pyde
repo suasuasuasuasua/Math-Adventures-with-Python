@@ -2,7 +2,7 @@ r1 = 300.0
 r2 = 175.0
 r3 = 5.0
 
-prop = 0.5
+prop = 0.9
 
 x1 = 0
 y1 = 0
@@ -27,8 +27,12 @@ def draw():
     y2 = sin(t)*(r1 - r2)
     ellipse(x2, y2, 2*r2, 2*r2) # the inner circle will spin within the circumference of the outer circle
     
-    x3 = x2+prop*(r2 - r3)*cos( -((r1-r2)/r2)*t )
+    # x3 = x2+prop*(r2 - r3)*cos( t ) # this is incorrect because the red dot will spin in a circle
+    # y3 = y2+prop*(r2 - r3)*sin( t )
+    
+    x3 = x2+prop*(r2 - r3)*cos( -((r1-r2)/r2)*t ) # the angular velocity will actually depend on the inner and outer radii
     y3 = y2+prop*(r2 - r3)*sin( -((r1-r2)/r2)*t ) # solves for the positions of the drawing dot
+    
     fill(255,0,0)
     ellipse(x3, y3, 2*r3, 2*r3)
     

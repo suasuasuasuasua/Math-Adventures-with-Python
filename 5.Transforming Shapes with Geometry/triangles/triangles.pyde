@@ -22,14 +22,14 @@ def draw():
     ### 5-2 Rainbow Triangles
     ## Color each triangle with stroke(), giving a rainbow patter
     
-    numTri = 90
+    numTri = 120
     
     for i in range(1, numTri + 1): # animates a circle of 90 triangles
     
         rotate(radians(360/numTri)) # rotates to new position in circle
         pushMatrix() # sets default location
         translate(200, 0) # moves the outer bound of circle
-        rotate(radians(t + 2*i * (360/numTri))) # rotates grid itself such that the triangles spin
+        rotate(radians(t + 3*i * (360/numTri))) # rotates grid itself such that the triangles spin
         # t + i means that subsequent triangles will have different phase shifts
         # we multiply by 360/90 to line up all of the triangles, creating a seamless pattern
         # therefore, the phase shifts must add up to a multiple to 360 degrees
