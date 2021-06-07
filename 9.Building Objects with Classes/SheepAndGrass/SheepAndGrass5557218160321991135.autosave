@@ -1,0 +1,89 @@
+# define some color constants to refer to 
+WHITE = color(255)
+BROWN = color(102,51,0)
+RED = color(255,0,0)
+GREEN = color(0,102,0)
+YELLOW = color(255,255,0)
+PURPLE = color(102,0,204)
+
+class Sheep:
+    def __init__ (self, x, y):
+        self.x = x # x-position
+        self.y = y # y-position
+        self.sz = 10 # size of Sheep
+        # since walking takes energy, we will give the sheep some level of energy, decrementing as they walk around
+        self.energy = 20 # energy level
+
+    def update(self):
+        move = 1 # max number of steps (pixels) that it can take in any direction
+        self.energy -= 1 # decrements as the sheep walks
+        
+        if self.energy <= 0:
+            sheepList.remove(self) # removes the sheep ( it dies ) if its energy drops below 0
+
+        self.x += random(-move, move)
+        self.y += random(-move, move)
+
+        # makes the sheep wrap the window
+        if self.x > width:
+            self.x %= width
+        if self.y > height:
+            self.y %= height
+        if self.x < 0:
+            self.x += width
+        if self.y < 0:
+            self.y += height
+
+        xscl = int(self.x / patchSize)
+        yscl = int(self.y / patchSize)
+        
+        grass = grassList[xscl * rows_of_grass + yscl]
+        if not grass.eaten:
+            # print(self.energy)
+            self.energy += grass.energy
+            grass.eaten = True
+        fill(255) # fills in the 'sheep' white
+
+        ellipse(self.x, self.y, self.sz, self.sz)
+
+class Grass:
+    def __init__ (self, x, y, sz):
+        self.x = x  # coordinates of the grass
+        self.y = y
+        self.energy = 5 # energy content of the grass
+        self.eaten = False # has the grass been eaten?
+        self.sz = sz # size of the grass
+    
+    def update(self):
+        if self.eaten:
+            fill(BROWN) # fills the shape if the grass is eaten
+        else:
+            fill(GREEN) # else, fills the shape green
+        rect(self.x,self.y,self.sz,self.sz)
+
+sheepList = [] # list to store the sheep
+grassList = [] # list to store the grass
+patchSize = 1 # size of the grass shapes
+
+def setup():
+    global patchSize, rows_of_grass # we will be using the earlier defined grass size
+
+    rows_of_grass = height/patchSize
+
+    noStroke() # removes outlines on shapes
+    size(600,600)
+    for i in range(10): # adds sheep to the list
+        sheepList.append( Sheep(random(width), random(height) ) )
+
+    for x in range(0, width, patchSize): # adds grass to the list depending on the patch size and the window size
+        for y in range(0, height, patchSize):
+            grassList.append( Grass(x, y, patchSize ) )
+
+def draw():
+    background(255)
+
+    for grass in grassList: # note the order that this is placed in because the sheeps will now be drawn on top of the grass
+        grass.update()
+
+    for sheep in sheepList: # updates the sheep every iteration
+        sheep.update()
