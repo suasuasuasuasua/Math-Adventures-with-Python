@@ -1,7 +1,7 @@
 frame = 0
 
 def setup():
-    sz(600,600)
+    size(600,600)
 
 def draw():
     global frame
