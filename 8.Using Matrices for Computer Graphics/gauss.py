@@ -50,6 +50,9 @@ def gauss(A):
   # now we need to calculate the additive inverse such that we can work toward the identity matrix
 
     for i in range(m):
+      # print(A)
+      # print(i,j)
+      # print(A[i][j])
       if i != j:
         # calculate the additive inverse
         addInv = A[i][j] * -1
@@ -71,5 +74,10 @@ C = [ [ 2, -1, 5, 1, -3],
       [ 1, 3, 3, -1, -47 ],
       [5,-2, -3, 3 , 49] ]
 
-print(gauss(C))
+solutionC = gauss(C)
+x = []
 
+for row in solutionC:
+  x.append(row[-1])
+
+print(x)

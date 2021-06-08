@@ -1,4 +1,5 @@
 t = 0
+# frame = 0
 points = []
 
 def setup():
@@ -14,14 +15,14 @@ def draw():
     # t = 0
     # points = []
         
-    # while t < 255: # saves 255 points so that we don't have to draw everything in real time
+    while t < 255: # saves 255 points so that we don't have to draw everything in real time
         # 255 points is the best balance between too much going to and too little going on 
-        # points.append(harmonograph(t)) # saves the coordinates to the lsit
-        # t += 0.01 # increments time
+        points.append(harmonograph(t)) # saves the coordinates to the lsit
+        t += 0.01 # increments time
         # in this way, we don't have to watch the program draw the picture slowly
         # but all at once
     
-    points.append(harmonograph(t)) # saves the coordinates to the lsit
+    # points.append(harmonograph(t)) # saves the coordinates to the lsit
 
     for i, pnt in enumerate(points): # draws the points based on the harmonograph function
         stroke(i * 255/len(points),255,255) # sets line color to rainbow(?)
@@ -30,7 +31,14 @@ def draw():
             line(pnt[0], pnt[1], points[i+1][0], points[i+1][1]) # draws line from one points to the very next one
             # this creates a very smooth drawing
     
-    t += 0.02
+    # save('frames/doubleHarmonograph ' + str(frame) + '.jpg')
+    save('doubleHarmonograph.jpg')
+    
+    # frame += 1
+    # t += 0.02
+    
+    # if frame == 300:
+        # exit()
     
 def harmonograph(t): # define the harmonograph function
     

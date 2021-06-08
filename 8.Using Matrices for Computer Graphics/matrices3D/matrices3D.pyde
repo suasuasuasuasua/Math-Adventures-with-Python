@@ -11,6 +11,7 @@ rangex = xmax - xmin
 rangey = ymax - ymin
 
 t = 0
+frame = 0
 
 def setup():
   global xscl, yscl
@@ -22,7 +23,7 @@ def setup():
   noFill()
 
 def draw():
-  global xscl,yscl,t
+  global xscl,yscl,t,frame
   # preprocessing
   background(255) # set background to white
   translate(width/2, height/2)
@@ -40,7 +41,12 @@ def draw():
 
   graphPoints(transformedMatrix, edges)
 
+  save('frames/matrices3D ' + str(frame) + '.jpg')
+  frame += 1
   t += 0.02
+  
+  if frame == 300:
+      exit()
 
 # coordinates of vertices of a 'f' shape
 # we need to define the z-axis for our f-shape

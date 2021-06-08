@@ -42,6 +42,8 @@ def draw():
                 
             rect(x, y, 1, 1) # makes a 1x1 rectangle at the pixel location  
     
+    save('mandelbrot.jpg')
+    
 #####
 
 def cAdd(a, b):

@@ -4,6 +4,7 @@ r2 = 10
 circleList = []
 
 t = 0
+frame = 0
 
 def setup():
     size(600,600)
@@ -14,7 +15,7 @@ def draw():
     noFill()
     stroke(0)
     
-    global t, circleList
+    global t, circleList, frame
     
     ## big circle
     ellipse(0, 0, 2*r1, 2*r1) # the last parameters are not radius, but width and height
@@ -36,4 +37,10 @@ def draw():
     for i, y, in enumerate(circleList): # draws the sine waves based on the height of the red ball
         ellipse(200+i, y, 5, 5)
     
+    save('frames/sinwave ' + str(frame) + '.jpg')
+    
+    frame += 1
     t += 0.05
+    
+    if frame == 300:
+        exit()

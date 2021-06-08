@@ -11,6 +11,7 @@ rangex = xmax - xmin
 rangey = ymax - ymin
 
 t = 0
+frame = 0
 
 def setup():
   global xscl, yscl
@@ -22,7 +23,7 @@ def setup():
   noFill()
 
 def draw():
-  global xscl,yscl,t
+  global xscl,yscl,t,frame
   background(255) # set background to white
   translate(width/2, height/2)
   grid(xscl, yscl)
@@ -48,8 +49,14 @@ def draw():
 
   stroke(0,0,255)
   graphPoints(timeMatrix)
-
+  
+  save('frames/rotating ' + str(frame) + '.jpg')
+  
+  frame += 1
   t += 0.1
+  
+  if frame == 300:
+      exit()
 
 # coordinates of vertices of a 'f' shape
 fmatrix = [ [0,0],

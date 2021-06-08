@@ -21,6 +21,8 @@ def draw():
     
     grid(xscl, yscl) # calls the grid function to draw a grid 
     graphFunction() # calls the function to graph f(x)
+    
+    save('grid.jpg')
 
 def f(x):
     # simple graph for f(x) = x^2

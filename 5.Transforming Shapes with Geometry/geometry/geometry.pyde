@@ -36,7 +36,8 @@ def draw():
         rect(200, 0, 50, 50)
         rotate(radians(360 / 12))
         
-
+    save('geometry.jpg')
+    
 def grid(xscl, yscl):
     # draws the grid for the graph
     stroke(0,255,255) # sets the line colors; cyan, in this case

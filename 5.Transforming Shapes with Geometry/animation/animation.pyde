@@ -8,10 +8,11 @@ rangex = xmax - xmin
 rangey = ymax - ymin
 
 t = 0 # time variable
+frame = 0
 
 def setup():
     global xscl, yscl
-    size(1000,1000) # defines the size of the coordinate plane
+    size(600,600) # defines the size of the coordinate plane
     xscl = width / rangex
     yscl = -height / rangey
     
@@ -19,7 +20,7 @@ def setup():
 
 def draw():
 
-    global t
+    global t, frame
     # sets up the grid to look pretty and centered
     background(255)
     translate(width/2, height/2) # shifts the entire grid such that 0,0 is the origin, not the top left corner
@@ -50,10 +51,16 @@ def draw():
         # grid(xscl,yscl)
         rect(0,0,50,50)
         popMatrix() # returns to the saved orientation
-        # grid(xscl,yscl)
+        # grid(xscl,ysscl)
         rotate(radians(360/12))
-        
-    t += 1 # increments time variable
+         
+    saveFrame('frames/animatedSquare' + str(frame) + '.jpg')
+    
+    t += 0.25 # increments time variable
+    frame += 1
+    
+    if frame == 120:
+        exit()
 
 def grid(xscl, yscl):
     # draws the grid for the graph

@@ -1,3 +1,5 @@
+frame = 0
+
 def setup():
     size(600,600)
     rectMode(CENTER)
@@ -6,7 +8,7 @@ def setup():
 t = 0 # time variable
 
 def draw():
-    global t
+    global t, frame
     
     translate(width/2,height/2)
     background(255) # sets background to white
@@ -37,7 +39,13 @@ def draw():
         equalTri(90) # creates a triangle with length 50 (based on 30-60-90)
         popMatrix() # resets back to original grid location
     
+    save('frames/triangles ' + str(frame) + '.jpg')
+    
     t += 0.5
+    frame += 1
+    
+    if frame == 180:
+        exit()
      
 def equalTri(length): # length is defined as the hypotenuse of an arbitrary 30-60-90 triangle
     noFill()

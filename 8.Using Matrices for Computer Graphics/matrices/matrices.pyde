@@ -39,6 +39,8 @@ def draw():
 
   stroke(255,0,0) # changes the color of the transformed matrix for clarity
   graphPoints(rotatedMatrix) # draws the transformed matrix
+  
+  save('matrices.jpg')
 
 # coordinates of vertices of a 'f' shape
 fmatrix = [ [0,0],

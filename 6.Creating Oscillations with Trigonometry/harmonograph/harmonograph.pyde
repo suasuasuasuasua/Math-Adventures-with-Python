@@ -23,6 +23,8 @@ def draw():
             line(pnt[0], pnt[1], points[i+1][0], points[i+1][1]) # draws line from one points to the very next one
             # this creates a very smooth drawing
     
+    save('harmonograph.jpg')
+    
 def harmonograph(t): # define the harmonograph function
     
     a1,a2 = 200,200       # amplitudes

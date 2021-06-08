@@ -1,4 +1,5 @@
 ballList = [] # contains the Ball objects
+frame = 0
 
 class Ball:
     def __init__(self, x, y): # defines the constructor for a Ball
@@ -28,11 +29,17 @@ class Ball:
 def setup():
     size(600,600)
     
-    for i in range(300): # adds Ball objects of random width and height to the list
+    for i in range(50): # adds Ball objects of random width and height to the list
         ballList.append(Ball(random(width), random(height))) 
 def draw():
+    global frame
     background(0) # black background
     
     for ball in ballList: # updates the position of each ball every time the program loops
         ball.update()
-    
+        
+        
+    save('frames/bouncingBall ' + str(frame) + '.jpg')
+    frame += 1
+    if frame == 300:
+        exit()

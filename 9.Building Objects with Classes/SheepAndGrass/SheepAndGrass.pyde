@@ -9,6 +9,8 @@ YELLOW = color(255,255,0)
 PURPLE = color(102,0,204)
 colorList = [WHITE, RED, YELLOW, PURPLE]
 
+frame = 0
+
 class Sheep:
     def __init__ (self, x, y, color):
         self.x = x # x-position
@@ -91,6 +93,7 @@ def setup():
             grassList.append( Grass(x, y, patchSize ) )
 
 def draw():
+    global frame
     background(255)
 
     for grass in grassList: # note the order that this is placed in because the sheeps will now be drawn on top of the grass
@@ -98,3 +101,10 @@ def draw():
 
     for sheep in sheepList: # updates the sheep every iteration
         sheep.update()
+    
+    save('frames/sheepAndGrass ' + str(frame) + '.jpg')
+    
+    frame += 1
+    
+    if frame == 300:
+        exit()

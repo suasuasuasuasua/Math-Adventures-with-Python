@@ -14,6 +14,7 @@ def draw():
     ## inside a shape
     
     polygon(10, 100)
+    save('polygon.jpg')
 
 
 def polygon(numSides, radius): # draws any polygon based on number of sides and radius

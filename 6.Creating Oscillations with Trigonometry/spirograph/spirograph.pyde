@@ -9,6 +9,8 @@ y1 = 0
 t = 0
 points = []
 
+# frame = 0
+
 def setup():
     size(600,600)
 
@@ -42,4 +44,12 @@ def draw():
             stroke(255,0,0) # red lines 
             line(pnt[0],pnt[1],points[i+1][0],points[i+1][1]) # draws lines between the current point and the point immediately after it
     
+    # save('frames/spriograph ' + str(frame) + '.jpg')
+    
+    save('spriograph.jpg')
+    
     t += 0.05
+    # frame += 1
+    
+    # if frame == 300:
+        # exit()

@@ -1,11 +1,21 @@
+frame = 0
+
 def setup():
     size(600,600)
 
 def draw():
+    global frame
+    
     background(255) # white background
-    translate(width/2, height/2)
+    translate(width/2, 3 * height/4)
     level = int(map(mouseX, 0, width, 0, 15)) # tracks the mouse in the x-direction, returning values between 0 and 10, as the mouse moves between the left and right edges of the window
     y(100, level)
+
+    save('frames/fractals ' + str(frame) + '.jpg')
+    frame += 1
+    
+    if frame == 300:
+        exit()
 
 def y(sz,level):
     if level > 0:
