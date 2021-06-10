@@ -4,8 +4,8 @@ cols = 1000
 
 # ruleset = [0,0,0,1,1,1,1,0] # rule 30
 # ruleset = [1,0,0,1,0,0,1,0] # rule 73
-ruleset = [1,0,0,1,0,1,0,1] # rule 75
-# ruleset = [1,0,1,1,0,1,0,0] # rule 90
+# ruleset = [1,0,0,1,0,1,0,1] # rule 75
+ruleset = [1,0,1,1,0,1,0,0] # rule 90
 
 def rules(a,b,c):
     return ruleset[7 - (4*a + 2*b + c)] # pseudo-way of converting to binary
@@ -48,4 +48,4 @@ def draw():
                 fill(255)
             rect(j*sz-(cols*sz-width)/2, sz*i, sz, sz)
     
-    save('elementaryCA75.jpg')
+    save('elementaryCA90.jpg')
