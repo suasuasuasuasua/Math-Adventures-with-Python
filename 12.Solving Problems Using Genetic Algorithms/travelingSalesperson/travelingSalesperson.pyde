@@ -60,7 +60,7 @@ class Route:
             child.cityNums = child.cityNums[::-1]
 
         notinslice = [x for x in partner.cityNums if x not in child.cityNums] # populates notinslice with numbers that are not the child.cityNums, but are in parter.cityNums
-        child.cityNums += notinSlice
+        child.cityNums += notinslice
         return child
 
 
@@ -71,6 +71,7 @@ mutated_improvements = 0
 population = []
 POP_N = 1000 # number of routes
 frame = 0
+iterations = 0
 
 def setup():
     global best, record_distance, first, population
@@ -87,7 +88,7 @@ def setup():
     first = record_distance
 
 def draw():
-    global best, record_distance, random_improvements, mutated_improvements, population, frame
+    global best, record_distance, random_improvements, mutated_improvements, population, frame, iterations
     background(0)
 
     best.display(cities) # displays the best route 
@@ -125,18 +126,29 @@ def draw():
             # best = mutated
             # mutated_improvements += 1
 
+    for i in range(POP_N):
+        parentA, parentB = random.sample(population,2)
+
+        child = parentA.crossover(parentB, N_CITIES)
+        population.append(child)
+        iterations += 1
+
     for i in range(3,25): # mutates the best in the population
         if i < N_CITIES:
             new = best.mutateN(i,cities,N_CITIES)
             population.append(new)
+            iterations += 1
 
     for i in range(3,25): # mutates random routes in the population
         if i < N_CITIES:
             new = random.choice(population)
             new = new.mutateN(i,cities,N_CITIES)
             population.append(new)
+            iterations += 1
 
     # save('frames/traveling + ' + str(frame) + '.jpg')
     # frame += 1
     # if frame == 300:
         # exit()
+
+    print(iterations)
